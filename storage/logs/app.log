@@ -1,0 +1,4 @@
+2024/01/29 12:32:02 {"callers":["C:/Users/Thacker/Desktop/project/go/first-gin/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706502722548330000}
+2024/01/29 12:57:46 {"callers":["C:/Users/Thacker/Desktop/project/go/first-gin/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706504266219591700}
+2024/01/29 12:58:32 {"callers":["C:/Users/Thacker/Desktop/project/go/first-gin/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706504312611653400}
+2024/01/29 13:00:21 {"callers":["C:/Users/Thacker/Desktop/project/go/first-gin/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706504421246041800}
