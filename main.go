@@ -1,13 +1,13 @@
 package main
 
 import (
-	"first-gin/global"
-	"first-gin/internal/model"
-	"first-gin/internal/routers"
-	"first-gin/pkg/logger"
-	"first-gin/pkg/setting"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"go-blog/global"
+	"go-blog/internal/model"
+	"go-blog/internal/routers"
+	"go-blog/pkg/logger"
+	"go-blog/pkg/setting"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"net/http"

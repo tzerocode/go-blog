@@ -1,11 +1,11 @@
 package model
 
 import (
-	"first-gin/global"
-	"first-gin/pkg/setting"
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"go-blog/global"
+	"go-blog/pkg/setting"
 )
 
 type Model struct {

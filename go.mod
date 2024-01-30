@@ -1,4 +1,4 @@
-module first-gin
+module go-blog
 
 go 1.18
 
