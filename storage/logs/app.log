@@ -2,3 +2,11 @@
 2024/01/30 10:49:37 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706582977172932600}
 2024/01/30 10:51:46 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706583106972570000}
 2024/01/30 10:53:31 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706583211412838600}
+2024/01/30 11:48:33 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706586513439466000}
+2024/01/30 11:49:17 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706586557509167000}
+2024/01/30 11:52:23 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706586743085115500}
+2024/01/30 11:53:23 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706586803549104000}
+2024/01/30 12:02:10 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706587330292502300}
+2024/01/30 12:14:39 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706588079193788100}
+2024/01/30 12:15:52 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706588152181586900}
+2024/01/30 12:16:51 {"callers":["C:/Users/Thacker/Desktop/project/go/go-blog/main.go: 22 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1706588211276395600}

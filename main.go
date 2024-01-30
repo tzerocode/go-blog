@@ -30,6 +30,10 @@ func init() {
 
 }
 
+// @title 博客系统
+// @version 1.0
+// @description Go-Blog
+// @TeamOfService https://github.com/tzerocode
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	fmt.Printf("%s", global.ServerSetting)
