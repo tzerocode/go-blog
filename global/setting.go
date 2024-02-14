@@ -7,7 +7,7 @@ import (
 
 var (
 	ServerSetting   *setting.ServerSettingS
-	AppSetting      *setting.AppSettings
+	AppSetting      *setting.AppSettingS
 	DatabaseSetting *setting.DatabaseSettingS
 	Logger          *logger.Logger
 )

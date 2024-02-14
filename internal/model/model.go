@@ -6,15 +6,17 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"go-blog/global"
 	"go-blog/pkg/setting"
+	"time"
 )
 
 type Model struct {
 	ID         uint32 `gorm:"primary_key" json:"id"`
-	CreateBy   string `json:"create_by"`
+	CreatedBy  string `json:"created_by"`
 	ModifiedBy string `json:"modified_by"`
-	CreatedOn  string `json:"created_on"`
-	DeletedOn  string `json:"deleted_on"`
-	IsDel      string `json:"is_del"`
+	CreatedOn  uint32 `json:"created_on"`
+	ModifiedOn uint32 `json:"modified_on"`
+	DeletedOn  uint32 `json:"deleted_on"`
+	IsDel      uint8  `json:"is_del"`
 }
 
 func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
@@ -36,5 +38,64 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	db.SingularTable(true)
 	db.DB().SetMaxIdleConns(databaseSetting.MaxIdleConns)
 	db.DB().SetMaxOpenConns(databaseSetting.MaxOpenConns)
+	db.SingularTable(true)
+	db.Callback().Create().Replace("gorm:update_time_stamp",
+		updateTimeStampForCreateCallback)
+	db.Callback().Update().Replace("gorm:update_time_stamp",
+		updateTimeStampForUpdateCallback)
+	db.Callback().Delete().Replace("gorm:delete", deleteCallback)
+	db.DB().SetMaxOpenConns(databaseSetting.MaxIdleConns)
+	db.DB().SetMaxIdleConns(databaseSetting.MaxOpenConns)
 	return db, nil
+}
+
+func updateTimeStampForCreateCallback(scope *gorm.Scope) {
+	if !scope.HasError() {
+		nowTime := time.Now().Unix()
+		if createTimeField, ok := scope.FieldByName("CreatedOn"); ok {
+			if createTimeField.IsBlank {
+				_ = createTimeField.Set(nowTime)
+			}
+		}
+
+		if modifyTimeField, ok := scope.FieldByName("ModifiedOn"); ok {
+			if modifyTimeField.IsBlank {
+				_ = modifyTimeField.Set(nowTime)
+			}
+		}
+	}
+}
+func updateTimeStampForUpdateCallback(scope *gorm.Scope) {
+	if _, ok := scope.Get("gorm:update_column"); !ok {
+		_ = scope.SetColumn("ModifiedOn", time.Now().Unix())
+	}
+}
+func deleteCallback(scope *gorm.Scope) {
+	if !scope.HasError() {
+		var extraOption string
+		if str, ok := scope.Get("gorm:delete_option"); ok {
+			extraOption = fmt.Sprint(str)
+		}
+		deleteOnField, hasDeleteOnField := scope.FieldByName("DeletedOn")
+		isDelField, hasIsDelField := scope.FieldByName("IsDel")
+		if !scope.Search.Unscoped && hasDeleteOnField && hasIsDelField {
+			now := time.Now().Unix()
+			scope.Raw(fmt.Sprintf(
+				"UPDATE %v SET %v=%v,%v=%v%v%v",
+				scope.QuotedTableName(),
+				scope.Quote(deleteOnField.DBName),
+				scope.AddToVars(now),
+				scope.Quote(isDelField.DBName),
+				scope.AddToVars(1),
+				addExtraSpaceIfExits(scope.CombinedConditionSql()), // 组装sql
+				addExtraSpaceIfExits(extraOption),
+			)).Exec()
+		}
+	}
+}
+func addExtraSpaceIfExits(str string) string {
+	if str != "" {
+		return "" + str
+	}
+	return ""
 }

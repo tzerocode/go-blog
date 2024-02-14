@@ -1,4 +1,13 @@
 definitions:
+  app.Pager:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+      total_rows:
+        type: integer
+    type: object
   errcode.Error:
     type: object
   model.Tag:
@@ -20,10 +29,16 @@ definitions:
       state:
         type: string
     type: object
+  model.TagSwagger:
+    properties:
+      list:
+        $ref: '#/definitions/model.Tag'
+      pager:
+        $ref: '#/definitions/app.Pager'
+    type: object
 info:
   contact: {}
   description: Go-Blog
-  termsOfService: https://github.com/tzerocode
   title: 博客系统
   version: "1.0"
 paths:
@@ -49,7 +64,7 @@ paths:
         "200":
           description: 成功
           schema:
-            $ref: '#/definitions/model.Tag'
+            $ref: '#/definitions/model.TagSwagger'
         "400":
           description: 请求错误
           schema:
@@ -84,7 +99,7 @@ paths:
         "200":
           description: 成功
           schema:
-            $ref: '#/definitions/model.Tag'
+            $ref: '#/definitions/model.TagSwagger'
         "400":
           description: 请求错误
           schema:
@@ -108,7 +123,7 @@ paths:
         "200":
           description: 成功
           schema:
-            $ref: '#/definitions/model.Tag'
+            $ref: '#/definitions/model.TagSwagger'
         "400":
           description: 请求错误
           schema:
@@ -147,7 +162,7 @@ paths:
         "200":
           description: 成功
           schema:
-            $ref: '#/definitions/model.Tag'
+            $ref: '#/definitions/model.TagSwagger'
         "400":
           description: 请求错误
           schema:

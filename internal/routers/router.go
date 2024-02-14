@@ -7,6 +7,7 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 	_ "go-blog/docs"
 	"go-blog/global"
+	"go-blog/internal/middleware"
 	v1 "go-blog/internal/routers/api/v1"
 )
 
@@ -14,6 +15,7 @@ func NewRouter() *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	r.Use(middleware.Translations())
 	//runMode := global.ServerSetting.RunMode
 	//if runMode == "debug" {
 	//	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
